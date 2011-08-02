@@ -26,7 +26,7 @@ See the old [Google Project](http://code.google.com/p/oauth2-php) for further de
 * [issue #7](http://code.google.com/p/oauth2-php/issues/detail?id=7): `authorize_client_response_type()` is never used.
 * [issue #9](http://code.google.com/p/oauth2-php/issues/detail?id=9): Change "redirect\_uri" filtering from `FILTER_VALIDATE_URL` to
   `FILTER_SANITIZE_URL`.
-* better coding syntax for `error()` and `callback\_error()`.
+* better coding syntax for `error()` and `callback_error()`.
 * better pdo\_oauth2.php variable naming with change to
   mysql\_create\_tables.sql.
 * change `REGEX_CLIENT_ID` as 3-32 characters long, so will work with `md5()`
