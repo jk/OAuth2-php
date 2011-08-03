@@ -31,5 +31,5 @@ CREATE TABLE `refresh_tokens` (
   `user_id` int(11) UNSIGNED NOT NULL,
   `expires` int(11) NOT NULL,
   `scope` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`oauth_token`)
+  PRIMARY KEY (`refresh_token`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
