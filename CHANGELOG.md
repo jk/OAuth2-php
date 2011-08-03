@@ -7,7 +7,7 @@
 See the old [Google Project](http://code.google.com/p/oauth2-php) for further details.
 
 ## Revision 23 (2011-01-25)
-* introduce Drupal style ``getVariable()`` and setVariable, replace legacy
+* introduce Drupal style `getVariable()` and `setVariable()`, replace legacy
   variable get/set functions.
 * remove hardcode PHP display\_error and errror\_reporting, as this should
   be manually implement within 3rd party integration.
