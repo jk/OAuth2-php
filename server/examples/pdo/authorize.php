@@ -8,7 +8,7 @@
  * In reality, you'd probably use a nifty framework to handle most of the crud for you.
  */
 
-require "lib/OAuth2StoragePDO.php";
+require_once "lib/OAuth2StoragePDO.php";
 
 /*
  * You would need to authenticate the user before authorization.
