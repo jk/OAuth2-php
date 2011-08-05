@@ -5,7 +5,7 @@
  * Sample OAuth2 Library PDO DB Implementation.
  * 
  * Simply pass in a configured PDO class, eg:
- *   new PDOOAuth2( new PDO('mysql:dbname=mydb;host=localhost', 'user', 'pass') );
+ *   new OAuth2StoragePDO( new PDO('mysql:dbname=mydb;host=localhost', 'user', 'pass') );
  */
 
 require_once __DIR__.'/../../../../lib/OAuth2.php';
