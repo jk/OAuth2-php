@@ -82,7 +82,7 @@ class OAuth2StoragePDO implements IOAuth2Storage {
     try {
       $client_secret = $this->hash($client_secret, $client_id);
       
-      $sql = 'INSERT INTO '.TABLE_CLIENTS.' (client_id, client_secret, redirect_uri) VALUES (:client_id, :client_secret, :redirect_uri)';
+      $sql = 'INSERT INTO '.self::TABLE_CLIENTS.' (client_id, client_secret, redirect_uri) VALUES (:client_id, :client_secret, :redirect_uri)';
       $stmt = $this->db->prepare($sql);
       $stmt->bindParam(':client_id', $client_id, PDO::PARAM_STR);
       $stmt->bindParam(':client_secret', $client_secret, PDO::PARAM_STR);
@@ -99,7 +99,7 @@ class OAuth2StoragePDO implements IOAuth2Storage {
    */
   public function checkClientCredentials($client_id, $client_secret = NULL) {
     try {
-      $sql = 'SELECT client_secret FROM '.TABLE_CLIENTS.' WHERE client_id = :client_id';
+      $sql = 'SELECT client_secret FROM '.self::TABLE_CLIENTS.' WHERE client_id = :client_id';
       $stmt = $this->db->prepare($sql);
       $stmt->bindParam(':client_id', $client_id, PDO::PARAM_STR);
       $stmt->execute();
@@ -120,7 +120,7 @@ class OAuth2StoragePDO implements IOAuth2Storage {
    */
   public function getClientDetails($client_id) {
     try {
-      $sql = 'SELECT redirect_uri FROM '.TABLE_CLIENTS.' WHERE client_id = :client_id';
+      $sql = 'SELECT redirect_uri FROM '.self::TABLE_CLIENTS.' WHERE client_id = :client_id';
       $stmt = $this->db->prepare($sql);
       $stmt->bindParam(':client_id', $client_id, PDO::PARAM_STR);
       $stmt->execute();
@@ -326,7 +326,7 @@ class OAuth2StoragePDO implements IOAuth2Storage {
    * @return string
    */
   protected function hash($client_secret, $client_id) {
-	return hash('sha256', $client_id.$client_secret.self::SALT);
+  	return hash('sha256', $client_id.$client_secret.self::SALT);
   }
   
   /**
