@@ -11,7 +11,7 @@ CREATE TABLE `auth_codes` (
 
 CREATE TABLE `clients` (
   `client_id` varchar(20) NOT NULL,
-  `client_secret` varchar(20) NOT NULL,
+  `client_secret` varchar(128) NOT NULL,
   `redirect_uri` varchar(200) NOT NULL,
   PRIMARY KEY (`client_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
