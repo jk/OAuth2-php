@@ -94,6 +94,49 @@ class OAuth2StoragePDO implements IOAuth2Storage {
   }
 
   /**
+   * Little helper function to list all available clients from the database.
+   * 
+   * Do NOT use this in production! This sample code shows the client secrets
+   * in plaintext!
+   *
+   * @return array All available clients
+   */
+  public function listClients()
+  {
+  	try {
+  		$sql = 'SELECT client_id, client_secret, redirect_uri FROM '.self::TABLE_CLIENTS.' ORDER BY client_id';
+		$stmt = $this->db->prepare($sql);
+		$stmt->execute();
+		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		return $result;
+  	} catch (PDOException $e) {
+  		$this->handleException($e);
+  	}
+  }
+
+	/**
+	 * Little helper function to delete a given client id
+	 *
+	 * @param string $client_id 
+	 * @return void
+	 */
+	public function deleteClient($client_id)
+	{
+		if (strlen($client_id) < 3 || strlen($client_id) > 32) {
+			$this->handleException('Client ID isn\'t in the right format');
+		}
+		
+		try {
+			$sql = 'DELETE FROM '.self::TABLE_CLIENTS.' WHERE client_id=:client_id';
+			$stmt = $this->db->prepare($sql);
+			$stmt->bindParam(':client_id', $client_id, PDO::PARAM_INT);
+			$stmt->execute();
+		} catch (PDOException $e) {
+			$this->handleException($e);
+		}
+	}
+
+  /**
    * Implements IOAuth2Storage::checkClientCredentials().
    *
    */
