@@ -3,6 +3,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 CREATE TABLE `auth_codes` (
   `code` varchar(40) NOT NULL,
   `client_id` varchar(20) NOT NULL,
+  `user_id` varchar(20) NOT NULL,
   `redirect_uri` varchar(200) NOT NULL,
   `expires` int(11) NOT NULL,
   `scope` varchar(250) DEFAULT NULL,
