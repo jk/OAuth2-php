@@ -1108,7 +1108,7 @@ class OAuth2 {
    * @ingroup oauth2_error
    */
   private function errorWWWAuthenticateResponseHeader($http_status_code, $realm, $error, $error_description = NULL, $error_uri = NULL, $scope = NULL) {
-    $realm = $realm === NULL ? $this->getDefaultAuthenticationRealm() : $realm;
+    $realm = $realm === NULL ? $this->getVariable(self::CONFIG_DEFAULT_REALM) : $realm;
 
     $result = "WWW-Authenticate: OAuth realm='" . $realm . "'";
 
