@@ -435,8 +435,10 @@ class OAuth2 {
     $token_param = $this->getAccessTokenParams();
     if ($token_param === FALSE) // Access token was not provided
       return $exit_not_present ? $this->errorWWWAuthenticateResponseHeader(self::HTTP_BAD_REQUEST, $realm, self::ERROR_INVALID_REQUEST, 'The request is missing a required parameter, includes an unsupported parameter or parameter value, repeats the same parameter, uses more than one method for including an access token, or is otherwise malformed.', NULL, $scope) : FALSE;
+
     // Get the stored token data (from the implementing subclass)
     $token = $this->storage->getAccessToken($token_param);
+
     if ($token === NULL)
       return $exit_invalid ? $this->errorWWWAuthenticateResponseHeader(self::HTTP_UNAUTHORIZED, $realm, self::ERROR_INVALID_TOKEN, 'The access token provided is invalid.', NULL, $scope) : FALSE;
 
