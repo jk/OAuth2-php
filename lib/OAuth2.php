@@ -502,11 +502,11 @@ class OAuth2 {
       $auth_header = trim($auth_header);
 
       // Make sure it's Token authorization
-      if (strcmp(substr($auth_header, 0, 5), "OAuth ") !== 0)
+      if (strcmp(substr($auth_header, 0, 5), "OAuth") !== 0)
         $this->handleError(self::HTTP_BAD_REQUEST, self::ERROR_INVALID_REQUEST, 'Auth header found that doesn\'t start with "OAuth"');
 
       // Parse the rest of the header
-      if (preg_match('/\s*OAuth\s*="(.+)"/', substr($auth_header, 5), $matches) == 0 || count($matches) < 2)
+      if (preg_match('/\s*OAuth\s*(.+)/', $auth_header, $matches) == 0 || count($matches) < 2)
         $this->handleError(self::HTTP_BAD_REQUEST, self::ERROR_INVALID_REQUEST, 'Malformed auth header');
 
       return $matches[1];
