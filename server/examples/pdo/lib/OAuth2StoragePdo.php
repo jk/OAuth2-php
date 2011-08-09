@@ -152,7 +152,7 @@ class OAuth2StoragePDO implements IOAuth2Storage {
       if ($client_secret === NULL)
           return $result !== FALSE;
 
-      return $this->checkPassword($client_secret, $result['client_secret'], $client_id);
+      return $this->checkPassword($result['client_secret'], $client_secret, $client_id);
     } catch (PDOException $e) {
       $this->handleException($e);
     }
@@ -323,8 +323,9 @@ class OAuth2StoragePDO implements IOAuth2Storage {
   protected function setToken($token, $client_id, $user_id, $expires, $scope, $isRefresh = TRUE) {
     try {
       $tableName = $isRefresh ? self::TABLE_REFRESH :  self::TABLE_TOKENS;
+      $tokenName = $isRefresh ? 'refresh_token' : 'oauth_token';
       
-      $sql = "INSERT INTO $tableName tokens (token, client_id, user_id, expires, scope) VALUES (:token, :client_id, :user_id, :expires, :scope)";
+      $sql = "INSERT INTO $tableName ($tokenName, client_id, user_id, expires, scope) VALUES (:token, :client_id, :user_id, :expires, :scope)";
       $stmt = $this->db->prepare($sql);
       $stmt->bindParam(':token', $token, PDO::PARAM_STR);
       $stmt->bindParam(':client_id', $client_id, PDO::PARAM_STR);
@@ -349,7 +350,7 @@ class OAuth2StoragePDO implements IOAuth2Storage {
       $tableName = $isRefresh ? self::TABLE_REFRESH :  self::TABLE_TOKENS;
       $tokenName = $isRefresh ? 'refresh_token' : 'oauth_token';
       
-      $sql = "SELECT token AS $tokenName, client_id, expires, scope, user_id FROM $tableName WHERE token = :token";
+      $sql = "SELECT $tokenName, client_id, expires, scope, user_id FROM $tableName WHERE $tokenName = :token";
       $stmt = $this->db->prepare($sql);
       $stmt->bindParam(':token', $token, PDO::PARAM_STR);
       $stmt->execute();
