@@ -2,7 +2,7 @@
 # OAuth2 PHP implementation
 This implementation consists of a server and client.
 
-The `master` branch implements the [IETF OAuth 2.0 Draft 10](http://tools.ietf.org/html/draft-ietf-oauth-v2-10) specification. You should proabably take a look at the `draft-20` branch for the latest and greatest code. [Draft 20](http://tools.ietf.org/html/draft-ietf-oauth-v2-20) was marked to be ready to implement and should be the last draft of OAuth 2.0 before it goes RFC. The `draft-20` branch aims to implement the [Bearer Token Draft](http://tools.ietf.org/html/draft-ietf-oauth-v2-bearer) and perhaps in the future even the [MAC Token Draft](http://tools.ietf.org/html/draft-hammer-oauth-v2-mac-token).
+The `master` branch implements the [IETF OAuth 2.0 Draft 10](http://tools.ietf.org/html/draft-ietf-oauth-v2-10) specification. You should proabably take a look at the `draft-20` branch for the latest and greatest code. [Draft 20](http://tools.ietf.org/html/draft-ietf-oauth-v2-20) was marked to be ready to implement and should be the last draft of OAuth 2.0 before it goes RFC. The `draft-20` branch aims to implement the [Bearer Token Draft](http://tools.ietf.org/html/draft-ietf-oauth-v2-bearer) and perhaps in the future even the [MAC Token Draft](http://tools.ietf.org/wg/oauth/draft-ietf-oauth-v2-http-mac/).
 
 ## Requirments
 * A recent version of PHP5 (tested on PHP 5.3.5)
@@ -16,7 +16,7 @@ Please have look in  `server/examples/pdo` directory. This should be working wit
 * [Official OAuth 2.0 website](http://oauth.net/2/)
 * [Latest IETF OAuth 2 Draft](http://tools.ietf.org/html/draft-ietf-oauth-v2) ([Draft 20](http://tools.ietf.org/html/draft-ietf-oauth-v2-20), [Draft 10](http://tools.ietf.org/html/draft-ietf-oauth-v2-10))
 * [Latest IETF OAuth 2 Bearer Token Draft](http://tools.ietf.org/html/draft-ietf-oauth-v2-bearer)
-* [Latest IETF OAuth 2 MAC Token Draft](http://tools.ietf.org/html/draft-hammer-oauth-v2-mac-token)
+* [Latest IETF OAuth 2 MAC Token Draft](http://tools.ietf.org/wg/oauth/draft-ietf-oauth-v2-http-mac/)
 
 ## Licensing
 This repository is released under the MIT licence. Check `LICENSE.txt` for more detail.
