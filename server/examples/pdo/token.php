@@ -10,7 +10,8 @@
  */
 
 require_once "lib/OAuth2StoragePDO.php";
+require_once "config.php";
 
-$oauth = new OAuth2(new OAuth2StoragePDO());
+$oauth = new OAuth2(new OAuth2StoragePDO($CONFIG['pdo']));
 $oauth->grantAccessToken();
 ?>

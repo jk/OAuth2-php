@@ -9,6 +9,7 @@
  */
 
 require_once "lib/OAuth2StoragePDO.php";
+require_once "config.php";
 
 /*
  * You would need to authenticate the user before authorization.
@@ -22,11 +23,12 @@ if (!isLoggedIn()) {
 }
  */
 
-$oauth = new OAuth2(new OAuth2StoragePDO());
+$oauth = new OAuth2(new OAuth2StoragePDO($CONFIG['pdo']));
 
 if ($_POST) {
-  $userId = $_SESSION['user_id']; // Use whatever method you have for identifying users.
-  $oauth->finishClientAuthorization($_POST["accept"] == "Yep", $userId, $_POST);
+	// $userId = $_SESSION['user_id']; // Use whatever method you have for identifying users.
+	$userId = 42;
+	$oauth->finishClientAuthorization($_POST["accept"] == "Yep", $userId, $_POST);
 }
 
 $auth_params = $oauth->getAuthorizeParams();
@@ -35,7 +37,7 @@ $auth_params = $oauth->getAuthorizeParams();
 <html>
   <head>Authorize</head>
   <body>
-    <form method="post" action="authorize.php">
+    <form method="post" action="<?=$_SERVER['REQUEST_URI']?>">
       <?php foreach ($auth_params as $k => $v) { ?>
       <input type="hidden" name="<?php echo $k ?>" value="<?php echo $v ?>" />
       <?php } ?>
