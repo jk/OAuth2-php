@@ -16,15 +16,14 @@ if ($_POST && isset($_POST["client_id"]) && isset($_POST["client_secret"]) && is
 }
 
 function new_key() {
+	$length = 32;
 	$fp = fopen('/dev/urandom','rb');
-	$entropy = fread($fp, 32);
+	$entropy = fread($fp, $length);
 	fclose($fp);
 	// in case /dev/urandom is reusing entropy from its pool, let's add a bit more entropy
 	$entropy .= uniqid(mt_rand(), true);
-	$hash = sha1($entropy);  // sha1 gives us a 40-byte hash
-	// The first 30 bytes should be plenty for the consumer_key
-	// We use the last 10 for the shared secret
-	return substr($hash,0,30);	
+	$hash = hash('sha256', $entropy);  // sha1 gives us a 40-byte hash
+	return substr($hash,0,$length);	
 }
 
 
