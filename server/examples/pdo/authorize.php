@@ -8,10 +8,11 @@
  * specially crafted frame-wrapper).
  */
 
+require_once "lib/OAuth2StoragePDO.php";
+require_once "config.php";
+
 // Clickjacking prevention (supported by IE8+, FF3.6.9+, Opera10.5+, Safari4+, Chrome 4.1.249.1042+)
 header('X-Frame-Options: DENY');
-
-require "lib/OAuth2StoragePDO.php";
 
 /*
  * You would need to authenticate the user before authorization.
@@ -25,11 +26,12 @@ if (!isLoggedIn()) {
 }
  */
 
-$oauth = new OAuth2(new OAuth2StoragePDO());
+$oauth = new OAuth2(new OAuth2StoragePDO($CONFIG['pdo']));
 
 if ($_POST) {
-  $userId = $_SESSION['user_id']; // Use whatever method you have for identifying users.
-  $oauth->finishClientAuthorization($_POST["accept"] == "Yep", $userId, $_POST);
+	// $userId = $_SESSION['user_id']; // Use whatever method you have for identifying users.
+	$userId = 42;
+	$oauth->finishClientAuthorization($_POST["accept"] == "Yep", $userId, $_POST);
 }
 
 try {
@@ -50,9 +52,9 @@ try {
   </script>
   </head>
   <body>
-    <form method="post" action="authorize.php">
+    <form method="post" action="#">
       <?php foreach ($auth_params as $key => $value) : ?>
-      	<input type="hidden" name="<?php htmlspecialchars($key, ENT_QUOTES); ?>" value="<?php echo htmlspecialchars($value, ENT_QUOTES); ?>" />
+      	<input type="hidden" name="<?=filter_var($key, FILTER_SANITIZE_FULL_SPECIAL_CHARS)?>" value="<?=filter_var($value, FILTER_SANITIZE_FULL_SPECIAL_CHARS)?>" />
       <?php endforeach; ?>
       Do you authorize the app to do its thing?
       <p>
