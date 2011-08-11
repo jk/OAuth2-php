@@ -1,4 +1,4 @@
-![OAuth 2 logo](Icon.png "OAuth 2 logo")
+![OAuth 2 logo](https://github.com/jk/oauth2-php/raw/master/Icon.png "OAuth 2 logo")
 # OAuth2 PHP implementation
 This implementation consists of a server and client.
 
