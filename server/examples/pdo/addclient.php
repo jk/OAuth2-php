@@ -58,7 +58,7 @@ $client_secret = new_key();
       </p>
 	<p>
 		<label for="title" style='color: darkgrey'>Title / Comment:</label><br>
-		<input type="text" name="title" value="z.B. Service Plan Beesite App" id="title" size="50" disabled>
+		<input type="text" name="title" value="e.g. My App" id="title" size="50" disabled>
 	</p>
 		
       <input type="submit" value="Submit" />
