@@ -19,7 +19,7 @@ CREATE TABLE `clients` (
 CREATE TABLE `access_tokens` (
   `oauth_token` varchar(40) NOT NULL,
   `client_id` varchar(20) NOT NULL,
-  `user_id` int(11) UNSIGNED NOT NULL,
+  `user_id` varchar(255) NOT NULL,
   `expires` int(11) NOT NULL,
   `scope` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`oauth_token`)
@@ -28,7 +28,7 @@ CREATE TABLE `access_tokens` (
 CREATE TABLE `refresh_tokens` (
   `refresh_token` varchar(40) NOT NULL,
   `client_id` varchar(20) NOT NULL,
-  `user_id` int(11) UNSIGNED NOT NULL,
+  `user_id` varchar(255) NOT NULL,
   `expires` int(11) NOT NULL,
   `scope` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`refresh_token`)

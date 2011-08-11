@@ -9,9 +9,11 @@
  * In reality, you'd probably use a nifty framework to handle most of the crud for you.
  */
 
-require "lib/OAuth2StoragePDO.php";
+require_once "lib/OAuth2StoragePDO.php";
+require_once "config.php";
 
-$oauth = new OAuth2(new OAuth2StoragePDO());
+
+$oauth = new OAuth2(new OAuth2StoragePDO($CONFIG['pdo']));
 $token = $oauth->getBearerToken();
 
 try {
@@ -21,7 +23,7 @@ try {
 }
 
 // With a particular scope, you'd do:
-// $oauth->verifyAccessToken("scope_name");
+// $oauth->verifyAccessToken($token, "scope_name");
 
 ?>
 
