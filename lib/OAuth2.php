@@ -788,7 +788,7 @@ class OAuth2 {
     if ($this->getVariable(self::CONFIG_ENFORCE_INPUT_REDIRECT) && !$input["redirect_uri"]) {
       throw new OAuth2ServerException(self::HTTP_FOUND, self::ERROR_REDIRECT_URI_MISMATCH, 'The rediect URI is mandatory and was not supplied.');
     }
-    if ($stored["redirect_uri"] && $input["redirect_uri"] || strcasecmp(substr($input["redirect_uri"], 0, strlen($stored['redirect_uri'])), $stored['redirect_uri']) !== 0) {
+    if (empty($input["redirect_uri"]) || strcasecmp(substr($input["redirect_uri"], 0, strlen($stored['redirect_uri'])), $stored['redirect_uri']) !== 0) {
       throw new OAuth2ServerException(self::HTTP_FOUND, self::ERROR_REDIRECT_URI_MISMATCH, 'The rediect URI provided is missing or does not match');
     }
 
