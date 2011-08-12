@@ -284,7 +284,7 @@ class OAuth2StoragePDO implements IOAuth2GrantCode, IOAuth2RefreshTokens {
    * @return string
    */
   protected function hash($client_secret, $client_id) {
-  	return hash('blowfish', $client_id.$client_secret.self::SALT);
+  	return hash('sha256', $client_id.$client_secret.self::SALT);
   }
   
   /**
