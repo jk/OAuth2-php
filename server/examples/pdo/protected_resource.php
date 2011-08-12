@@ -14,12 +14,12 @@ require_once "config.php";
 
 
 $oauth = new OAuth2(new OAuth2StoragePDO($CONFIG['pdo']));
-$token = $oauth->getBearerToken();
 
 try {
-  $oauth->verifyAccessToken($token);
+	$token = $oauth->getBearerToken();
+	$oauth->verifyAccessToken($token);
 } catch (OAuth2ServerException $oauthError) {
-  $oauthError->sendHttpResponse();
+ 	$oauthError->sendHttpResponse();
 }
 
 // With a particular scope, you'd do:
