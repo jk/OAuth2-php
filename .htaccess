@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteRule ^authorize$ server/examples/pdo/authorize.php [QSA,L]
+RewriteRule ^token$ server/examples/pdo/token.php [QSA,L]
+RewriteRule ^protected_resource$ server/examples/pdo/protected_resource.php [QSA,L]

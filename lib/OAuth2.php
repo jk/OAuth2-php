@@ -530,12 +530,15 @@ class OAuth2 {
    * @ingroup oauth2_section_5
    */
   private function checkScope($required_scope, $available_scope) {
+	// Change it the regex according to your backend needs
+	$split_regex = '/[ \t,:]/';
+
     // The required scope should match or be a subset of the available scope
     if (!is_array($required_scope))
-      $required_scope = explode(' ', trim($required_scope));
+      $required_scope = preg_split($split_regex, trim($required_scope));
 
     if (!is_array($available_scope))
-      $available_scope = explode(' ', trim($available_scope));
+      $available_scope = preg_split($split_regex, trim($available_scope));
 
     return (count(array_diff($required_scope, $available_scope)) == 0);
   }
