@@ -9,19 +9,20 @@
  * In reality, you'd probably use a nifty framework to handle most of the crud for you.
  */
 
-require "lib/OAuth2StorageMongo.php";
+require 'lib/OAuth2StorageMongo.php';
+require 'config.php';
 
-$token = isset($_GET[OAuth2::TOKEN_PARAM_NAME]) ? $_GET[OAuth2::TOKEN_PARAM_NAME] : null;
-$oauth = new OAuth2(new OAuth2StorageMongo());
+$oauth = new OAuth2(new OAuth2StorageMongo($CONFIG['DSN'], $CONFIG['MONGO_CONFIG']));
 
 try {
-  $oauth->verifyAccessToken($token);
+	$token = $oauth->getBearerToken();
+	$oauth->verifyAccessToken($token);
 } catch (OAuth2ServerException $oauthError) {
-  $oauthError->sendHttpResponse();
+ 	$oauthError->sendHttpResponse();
 }
 
 // With a particular scope, you'd do:
-// $oauth->verifyAccessToken("scope_name");
+// $oauth->verifyAccessToken($token, "scope_name");
 
 ?>
 
