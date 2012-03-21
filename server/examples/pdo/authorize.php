@@ -8,7 +8,7 @@
  * specially crafted frame-wrapper).
  */
 
-require_once "lib/OAuth2StoragePDO.php";
+require_once __DIR__."/lib/OAuth2StoragePDO.php";
 require_once "config.php";
 
 // Clickjacking prevention (supported by IE8+, FF3.6.9+, Opera10.5+, Safari4+, Chrome 4.1.249.1042+)
