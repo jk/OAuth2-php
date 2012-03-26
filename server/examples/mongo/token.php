@@ -14,7 +14,7 @@ require 'config.php';
 
 $oauth = new OAuth2(new OAuth2StorageMongo($CONFIG['DSN'], $CONFIG['MONGO_CONFIG']));
 try {
-  $oauth->grantaccesstoken();
+  $oauth->grantAccessToken();
 }
 catch (OAuth2ServerException $oauthError) {
   $oauthError->sendHttpResponse();
