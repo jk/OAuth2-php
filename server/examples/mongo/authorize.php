@@ -9,17 +9,17 @@
  * In reality, you'd probably use a nifty framework to handle most of the crud for you.
  */
 
-require 'lib/OAuth2StorageMongo.php';
-require 'config.php';
+require __DIR__.'lib/OAuth2StorageMongo.php';
+require __DIR__.'config.php';
 
 // Clickjacking prevention (supported by IE8+, FF3.6.9+, Opera10.5+, Safari4+, Chrome 4.1.249.1042+)
 header('X-Frame-Options: DENY');
 
 /*
  * You would need to authenticate the user before authorization.
- * 
+ *
  * Below is some psudeo-code to show what you might do:
- * 
+ *
 session_start();
 if (!isLoggedIn()) {
   redirectToLoginPage();

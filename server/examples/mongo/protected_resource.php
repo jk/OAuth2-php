@@ -9,8 +9,8 @@
  * In reality, you'd probably use a nifty framework to handle most of the crud for you.
  */
 
-require 'lib/OAuth2StorageMongo.php';
-require 'config.php';
+require __DIR__.'lib/OAuth2StorageMongo.php';
+require __DIR__.'config.php';
 
 $oauth = new OAuth2(new OAuth2StorageMongo($CONFIG['DSN'], $CONFIG['MONGO_CONFIG']));
 

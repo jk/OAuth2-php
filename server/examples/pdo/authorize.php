@@ -3,22 +3,22 @@
  * @file
  * Sample authorize endpoint.
  *
- * This sample provides two click-jacking prevention methods, neither which are perfect. 
- * The javascript solution is similar to what facebook used to have (but can be defeated with a 
+ * This sample provides two click-jacking prevention methods, neither which are perfect.
+ * The javascript solution is similar to what facebook used to have (but can be defeated with a
  * specially crafted frame-wrapper).
  */
 
 require_once __DIR__."/lib/OAuth2StoragePDO.php";
-require_once "config.php";
+require_once __DIR__."config.php";
 
 // Clickjacking prevention (supported by IE8+, FF3.6.9+, Opera10.5+, Safari4+, Chrome 4.1.249.1042+)
 header('X-Frame-Options: DENY');
 
 /*
  * You would need to authenticate the user before authorization.
- * 
+ *
  * Below is some psudeo-code to show what you might do:
- * 
+ *
 session_start();
 if (!isLoggedIn()) {
 	redirectToLoginPage();

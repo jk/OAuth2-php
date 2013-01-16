@@ -7,8 +7,8 @@
  * Obviously not production-ready code, just simple and to the point.
  */
 
-require_once "lib/OAuth2StoragePdo.php";
-require_once "config.php";
+require_once __DIR__."lib/OAuth2StoragePdo.php";
+require_once __DIR__."config.php";
 
 if ($_POST && isset($_POST["client_id"]) && isset($_POST["client_secret"]) && isset($_POST["redirect_uri"])) {
   $oauthStorage = new OAuth2StoragePDO($CONFIG['pdo']);
@@ -23,7 +23,7 @@ function new_key() {
 	// in case /dev/urandom is reusing entropy from its pool, let's add a bit more entropy
 	$entropy .= uniqid(mt_rand(), true);
 	$hash = hash('sha256', $entropy);  // sha1 gives us a 40-byte hash
-	return substr($hash,0,$length);	
+	return substr($hash,0,$length);
 }
 
 
@@ -38,7 +38,7 @@ $client_secret = new_key();
 		.key {
 			font-family: "Courier New", Courier, monospace;
 			font-size: 12pt;
-			
+
 		}
 	</style>
   </head>
@@ -60,7 +60,7 @@ $client_secret = new_key();
 		<label for="title" style='color: darkgrey'>Title / Comment:</label><br>
 		<input type="text" name="title" value="e.g. My App" id="title" size="50" disabled>
 	</p>
-		
+
       <input type="submit" value="Submit" />
     </form>
   </body>
