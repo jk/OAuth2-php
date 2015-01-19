@@ -2,9 +2,9 @@
 
 use JK\OAuth2\MongoDB\OAuth2StorageMongo;
 
-require __DIR__ . 'config.php';
+require dirname(__DIR__).'/bootstrap.php';
 
-var_dump($CONFIG);
+require __DIR__ . 'config.php';
 
 if ($_POST && isset($_POST["client_id"]) && isset($_POST["client_secret"]) && isset($_POST["redirect_uri"])) {
   $oauth = new OAuth2StorageMongo($CONFIG['DSN'], $CONFIG['MONGO_CONFIG']);

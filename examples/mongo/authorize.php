@@ -4,6 +4,8 @@ use JK\OAuth2\MongoDB\OAuth2StorageMongo;
 use JK\OAuth2\OAuth2;
 use JK\OAuth2\OAuth2ServerException;
 
+require dirname(__DIR__).'/bootstrap.php';
+
 require __DIR__ . 'config.php';
 
 // Clickjacking prevention (supported by IE8+, FF3.6.9+, Opera10.5+, Safari4+, Chrome 4.1.249.1042+)

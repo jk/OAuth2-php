@@ -4,6 +4,8 @@ use JK\OAuth2\OAuth2;
 use JK\OAuth2\OAuth2ServerException;
 use JK\OAuth2\Pdo\OAuth2StoragePDO;
 
+require dirname(__DIR__).'/bootstrap.php';
+
 require_once __DIR__ . "config.php";
 
 if ($_POST && isset($_POST["client_id"]) && isset($_POST["client_secret"]) && isset($_POST["redirect_uri"])) {
