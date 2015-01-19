@@ -1,5 +1,10 @@
 <?php
 namespace JK\OAuth2\MongoDB;
+use JK\OAuth2\IOAuth2RefreshTokens;
+use JK\OAuth2\IOAuth2GrantCode;
+use MongoDB;
+use Mongo;
+use Exception;
 
 /**
  * MongoDB storage engine for the OAuth2 Library.
