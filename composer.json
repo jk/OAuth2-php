@@ -1,13 +1,9 @@
 {
-  "name": "jk/restserver",
+  "name": "jk/oauth2-php",
   "type": "library",
-  "description": "A PHP REST server for providing a very light-weight REST API without aweful routing configuration",
+  "description": "OAuth2 Draft 20 server implementation",
   "require": {
-    "php": ">= 5.3.13",
-    "ext-json": "*",
-    "ext-pcre": "*",
-    "ext-reflection": "*",
-    "ext-spl": "*"
+    "php": ">= 5.3.13"
   },
   "require-dev": {
     "phpunit/phpunit": "~4",
@@ -21,11 +17,10 @@
   },
   "autoload": {
     "psr-0": {
-      "JK\\RestServer\\": "src/",
-      "JK\\RestServer\\Tests\\": "tests/"
+      "JK\\OAuth2\\": "src/"
     }
   },
-  "homepage": "https://github.com/jk/RestServer",
+  "homepage": "https://github.com/jk/oauth2-php",
   "license": "MIT",
   "authors": [
     {
@@ -36,7 +31,7 @@
     }
   ],
   "support": {
-    "issues": "https://github.com/jk/restserver/issues",
-    "wiki": "https://github.com/jk/restserver/wiki"
+    "issues": "https://github.com/jk/oauth2-php/issues",
+    "wiki": "https://github.com/jk/oauth2-php/wiki"
   }
 }
